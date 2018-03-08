@@ -7,7 +7,13 @@ import sortBy from 'lodash/sortBy';
 import sampleData from '../sampleData.json';
 
 // Types
-export const types = {};
+export const types = {
+  ADD_ASSET: 'ADD_ASSET',
+  REMOVE_ASSET: 'REMOVE_ASSET',
+  EDIT_ASSET: 'EDIT_ASSET',
+  GET_LATEST_PRICES: 'GET_LATEST_PRICES',
+  REFRESH_PRICES: 'REFRESH_PRICES',
+};
 
 // Initial State
 export const initialState = sampleData.portfolio;
@@ -24,7 +30,6 @@ export default (state = initialState, action) => {
 export const actions = {};
 
 // Selectors
-
 export const selectors = {
   calculateHoldings: state => {
     const portfolio = Object.values(state.portfolio);
@@ -43,7 +48,7 @@ export const selectors = {
         (acc, order) => acc + order.quantity * order.price,
         0
       );
-      
+
       asset.unrealizedGain = asset.marketValue - asset.bookValue;
       asset.unrealizedGainPercent = asset.unrealizedGain / asset.bookValue;
     }
