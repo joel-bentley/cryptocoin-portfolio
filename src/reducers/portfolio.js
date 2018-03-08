@@ -63,6 +63,9 @@ export const selectors = {
       ),
     };
 
+    overview.totalUnrealizedGainPercent =
+      overview.totalUnrealizedGain / overview.totalBookValue;
+
     for (let asset of portfolio) {
       asset.portfolioPercent = asset.marketValue / overview.totalMarketValue;
     }

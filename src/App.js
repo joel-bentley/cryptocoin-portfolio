@@ -22,7 +22,7 @@ class App extends React.Component {
           }}
         >
           <Divider fitted />
-          <Header textAlign="center">Cryptocoin Portfolio</Header>
+          <Header textAlign="center">CRYPTOCOIN PORTFOLIO</Header>
 
           <Divider />
           <Menu.Item exact link to="/" as={NavLink}>
