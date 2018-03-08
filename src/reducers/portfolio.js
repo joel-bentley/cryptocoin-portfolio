@@ -43,7 +43,7 @@ export const selectors = {
         (acc, order) => acc + order.quantity * order.price,
         0
       );
-      asset.averageCost = asset.bookValue / asset.quantity;
+      
       asset.unrealizedGain = asset.marketValue - asset.bookValue;
       asset.unrealizedGainPercent = asset.unrealizedGain / asset.bookValue;
     }

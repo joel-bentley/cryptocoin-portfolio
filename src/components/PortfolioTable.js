@@ -1,6 +1,9 @@
 import React from 'react';
 import { Table } from 'semantic-ui-react';
 
+import 'cryptocoins-icons/webfont/cryptocoins.css';
+import 'cryptocoins-icons/webfont/cryptocoins-colors.css';
+
 const PortfolioTable = ({ portfolio }) => {
   return (
     <Table celled>
@@ -8,8 +11,7 @@ const PortfolioTable = ({ portfolio }) => {
         <Table.Row>
           <Table.HeaderCell textAlign="center">Asset</Table.HeaderCell>
           <Table.HeaderCell textAlign="center">Quantity</Table.HeaderCell>
-          <Table.HeaderCell textAlign="center">Price</Table.HeaderCell>
-          <Table.HeaderCell textAlign="center">Average Cost</Table.HeaderCell>
+          <Table.HeaderCell textAlign="center">Latest Price</Table.HeaderCell>
           <Table.HeaderCell textAlign="center">Market Value</Table.HeaderCell>
           <Table.HeaderCell textAlign="center">Book Value</Table.HeaderCell>
           <Table.HeaderCell textAlign="center">
@@ -32,18 +34,25 @@ const PortfolioTable = ({ portfolio }) => {
               </div>
             </div>
           );
+
           return (
             <Table.Row key={asset.name}>
-              <Table.Cell textAlign="center">{asset.name}</Table.Cell>
+              <Table.Cell textAlign="center">
+                <i
+                  className={`cc ${asset.name}`}
+                  style={{ fontSize: 'x-large' }}
+                />
+                <br />
+                <strong style={{ letterSpacing: 1 }}>
+                  {asset.name}
+                </strong>
+              </Table.Cell>
               <Table.Cell textAlign="center">{asset.quantity}</Table.Cell>
               <Table.Cell textAlign="center">
                 $ {asset.price.toFixed(2)}
               </Table.Cell>
               <Table.Cell textAlign="center">
                 $ {asset.marketValue.toFixed(2)}
-              </Table.Cell>
-              <Table.Cell textAlign="center">
-                $ {asset.averageCost.toFixed(2)}
               </Table.Cell>
               <Table.Cell textAlign="center">
                 $ {asset.bookValue.toFixed(2)}

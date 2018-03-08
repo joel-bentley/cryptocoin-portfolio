@@ -6,7 +6,7 @@ import Home from './containers/Home';
 import About from './containers/About';
 import Time from './containers/Time';
 
-const sidebarWidth = 140;
+const sidebarWidth = 180;
 
 class App extends React.Component {
   render() {
@@ -21,10 +21,9 @@ class App extends React.Component {
             backgroundColor: '#86c773',
           }}
         >
-          <Divider fitted />
-          <Header textAlign="center">CRYPTOCOIN PORTFOLIO</Header>
 
-          <Divider />
+          <Header textAlign="center">CRYPTOCOIN PORTFOLIO</Header>
+          <br />
           <Menu.Item exact link to="/" as={NavLink}>
             Home
           </Menu.Item>
@@ -35,7 +34,6 @@ class App extends React.Component {
             Time
           </Menu.Item>
           <Divider fitted />
-          <Divider />
         </Menu>
 
         <div
