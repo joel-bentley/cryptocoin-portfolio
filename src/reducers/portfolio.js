@@ -21,13 +21,20 @@ export const initialState = sampleData.portfolio;
 // Reducer
 export default (state = initialState, action) => {
   switch (action.type) {
+    case types.ADD_ASSET:
+    case types.REMOVE_ASSET:
+    case types.EDIT_ASSET:
     default:
       return state;
   }
 };
 
 // Actions
-export const actions = {};
+export const actions = {
+  addAsset: assetName => ({ type: types.ADD_ASSET, payload: assetName }),
+  removeAsset: id => ({ type: types.REMOVE_ASSET, payload: id }),
+  editAsset: asset => ({ type: types.EDIT_ASSET, payload: asset }),
+};
 
 // Selectors
 export const selectors = {
@@ -71,9 +78,9 @@ export const selectors = {
     overview.totalUnrealizedGainPercent =
       overview.totalUnrealizedGain / overview.totalBookValue;
 
-    for (let asset of portfolio) {
-      asset.portfolioPercent = asset.marketValue / overview.totalMarketValue;
-    }
+    // for (let asset of portfolio) {
+    //   asset.portfolioPercent = asset.marketValue / overview.totalMarketValue;
+    // }
 
     return { overview, portfolio };
   },

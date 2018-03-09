@@ -1,22 +1,24 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Segment, Header } from 'semantic-ui-react';
+import { Segment } from 'semantic-ui-react';
 
 import PortfolioOverview from '../components/PortfolioOverview';
 import PortfolioTable from '../components/PortfolioTable';
 
+import { actions } from '../reducers/portfolio';
 import { selectors } from '../reducers/portfolio';
 
 function Home(props) {
   return (
     <Fragment>
-      <Header as="h3" block attached="top">
-        Portfolio
-      </Header>
-      <Segment attached>
+      <Segment>
         <PortfolioOverview overview={props.overview} />
-        <PortfolioTable portfolio={props.portfolio} />
       </Segment>
+      <PortfolioTable
+        portfolio={props.portfolio}
+        removeAsset={props.removeAsset}
+        editAsset={props.editAsset}
+      />
     </Fragment>
   );
 }
@@ -25,4 +27,12 @@ function mapStateToProps(state) {
   return selectors.calculateHoldings(state);
 }
 
-export default connect(mapStateToProps)(Home);
+function mapDispatchToProps(dispatch) {
+  return {
+    addAsset: assetName => dispatch(actions.addAsset(assetName)),
+    removeAsset: id => dispatch(actions.removeAsset(id)),
+    editAsset: asset => dispatch(actions.editAsset(asset)),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
