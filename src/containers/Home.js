@@ -16,6 +16,7 @@ function Home(props) {
       </Segment>
       <PortfolioTable
         portfolio={props.portfolio}
+        addAsset={props.addAsset}
         removeAsset={props.removeAsset}
         editAsset={props.editAsset}
       />

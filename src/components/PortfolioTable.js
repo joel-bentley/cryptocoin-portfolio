@@ -1,27 +1,16 @@
 import React, { Component, Fragment } from 'react';
-import { Table, Button, Confirm, Icon } from 'semantic-ui-react';
+import { Table, Icon } from 'semantic-ui-react';
 
-import AssetEditModal from './AssetEditModal';
+import AddAssetModal from './AddAssetModal';
+import EditAssetModal from './EditAssetModal';
+import RemoveAssetModal from './RemoveAssetModal';
 
 import 'cryptocoins-icons/webfont/cryptocoins.css';
 import 'cryptocoins-icons/webfont/cryptocoins-colors.css';
 
 class PortfolioTable extends Component {
-  state = {
-    editModalOpen: false,
-    removeModalOpen: false,
-  };
-
-  handleEditSubmit = asset => {};
-
-  handleRemoveConfirm = id => {
-    this.setState({ removeModalOpen: false });
-    this.props.removeAsset(id);
-  };
-
   render() {
-    const { portfolio } = this.props;
-    const { editModalOpen, removeModalOpen } = this.state;
+    const { portfolio, addAsset, editAsset, removeAsset } = this.props;
 
     return (
       <Fragment>
@@ -84,32 +73,23 @@ class PortfolioTable extends Component {
                     {unrealizedGainMarkup}
                   </Table.Cell>
                   <Table.Cell textAlign="center">
-                    <AssetEditModal
-                      open={editModalOpen}
-                      trigger={
-                        <Button
-                          icon="write"
-                          circular
-                          color="teal"
-                          onClick={() => this.setState({ editModalOpen: true })}
-                        />
-                      }
+                    <EditAssetModal
+                      buttonProps={{
+                        icon: 'write',
+                        circular: true,
+                        color: 'teal',
+                      }}
                       asset={asset}
-                      handleCancel={() =>
-                        this.setState({ editModalOpen: false })
-                      }
-                      handleSubmit={this.handleEditSubmit}
+                      handleSubmit={editAsset}
                     />
-                    <Button
-                      icon="delete"
-                      circular
-                      color="orange"
-                      onClick={() => this.setState({ removeModalOpen: true })}
-                    />
-                    <Confirm
-                      open={removeModalOpen}
-                      onCancel={() => this.setState({ removeModalOpen: false })}
-                      onConfirm={() => this.handleRemoveConfirm(asset.id)}
+                    <RemoveAssetModal
+                      buttonProps={{
+                        icon: 'delete',
+                        circular: true,
+                        color: 'orange',
+                      }}
+                      asset={asset}
+                      handleSubmit={removeAsset}
                     />
                   </Table.Cell>
                 </Table.Row>
@@ -118,20 +98,17 @@ class PortfolioTable extends Component {
           </Table.Body>
         </Table>
         <div style={{ height: '1em' }} />
-        <AssetEditModal
-          open={editModalOpen}
-          trigger={
-            <Button
-              style={{ float: 'right' }}
-              color="blue"
-              onClick={() => this.setState({ editModalOpen: true })}
-            >
-              <Icon name="plus" /> Add Coin
-            </Button>
-          }
-          asset={{}}
-          handleCancel={() => this.setState({ editModalOpen: false })}
-          handleSubmit={this.handleEditSubmit}
+        <AddAssetModal
+          buttonProps={{
+            content: (
+              <div>
+                <Icon name="plus" /> Add Coin
+              </div>
+            ),
+            style: { float: 'right' },
+            color: 'blue',
+          }}
+          handleSubmit={addAsset}
         />
       </Fragment>
     );
