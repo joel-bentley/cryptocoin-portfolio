@@ -106,7 +106,6 @@ class PortfolioTable extends Component {
               </div>
             ),
             style: { float: 'right' },
-            color: 'blue',
           }}
           handleSubmit={addAsset}
         />
