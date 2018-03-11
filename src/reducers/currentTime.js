@@ -5,14 +5,14 @@ export const types = {
 
 export const initialState = { currentTime: new Date().toString() };
 
-export default (state = initialState, action) => {
+export default function reducer(state = initialState, action) {
   switch (action.type) {
     case types.SET_NEW_TIME:
       return { ...state, currentTime: action.payload };
     default:
       return state;
   }
-};
+}
 
 export const actions = {
   fetchNewTime: () => ({

@@ -5,7 +5,7 @@ export const types = {
 
 export const initialState = { currentUser: {}, loggedIn: false };
 
-export default (state = initialState, action) => {
+export default function reducer(state = initialState, action) {
   switch (action.type) {
     case types.LOGIN:
       return { ...state, currentUser: action.payload, loggedIn: true };
@@ -14,7 +14,7 @@ export default (state = initialState, action) => {
     default:
       return state;
   }
-};
+}
 
 export const actions = {
   login: user => ({ type: types.LOGIN, payload: user }),

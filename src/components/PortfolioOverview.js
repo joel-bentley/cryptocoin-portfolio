@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Header } from 'semantic-ui-react';
 
-const PortfolioOverview = ({ overview }) => {
+function PortfolioOverview({ overview }) {
   const totalUnrealizedGainColor =
     overview.totalUnrealizedGain >= 0 ? 'black' : 'red';
 
@@ -32,6 +32,6 @@ const PortfolioOverview = ({ overview }) => {
       </Grid.Row>
     </Grid>
   );
-};
+}
 
 export default PortfolioOverview;

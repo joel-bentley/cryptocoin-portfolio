@@ -19,7 +19,7 @@ export const types = {
 export const initialState = sampleData.portfolio;
 
 // Reducer
-export default (state = initialState, action) => {
+export default function reducer(state = initialState, action) {
   switch (action.type) {
     case types.ADD_ASSET:
     case types.REMOVE_ASSET:
@@ -27,7 +27,7 @@ export default (state = initialState, action) => {
     default:
       return state;
   }
-};
+}
 
 // Actions
 export const actions = {
