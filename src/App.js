@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Route, NavLink } from 'react-router-dom';
-import { Menu, Header, Divider } from 'semantic-ui-react';
+import { Menu } from 'semantic-ui-react';
 
 import Home from './containers/Home';
 import About from './containers/About';
@@ -11,19 +11,14 @@ const sidebarWidth = 180;
 class App extends React.Component {
   render() {
     return (
-      <div>
+      <Fragment>
         <Menu
-          vertical
-          fixed="left"
+          fixed="top"
           style={{
-            width: sidebarWidth,
-            paddingTop: 40,
             backgroundColor: '#86c773',
           }}
         >
-
-          <Header textAlign="center">CRYPTOCOIN PORTFOLIO</Header>
-          <br />
+          <Menu.Item header>CRYPTOCOIN PORTFOLIO</Menu.Item>
           <Menu.Item exact link to="/" as={NavLink}>
             Home
           </Menu.Item>
@@ -33,21 +28,14 @@ class App extends React.Component {
           <Menu.Item link to="/time" as={NavLink}>
             Time
           </Menu.Item>
-          <Divider fitted />
         </Menu>
 
-        <div
-          style={{
-            marginLeft: sidebarWidth,
-          }}
-        >
-          <div style={{ padding: 80 }}>
-            <Route exact path="/" component={Home} />
-            <Route path="/about" component={About} />
-            <Route path="/time" component={Time} />
-          </div>
+        <div style={{ padding: 100 }}>
+          <Route exact path="/" component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/time" component={Time} />
         </div>
-      </div>
+      </Fragment>
     );
   }
 }
