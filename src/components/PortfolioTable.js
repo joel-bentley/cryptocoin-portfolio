@@ -73,10 +73,10 @@ class PortfolioTable extends Component {
                     {!!lastPrice && `$ ${lastPrice.toFixed(2)}`}
                   </Table.Cell>
                   <Table.Cell textAlign="center">
-                    {!!marketValue && `$ ${marketValue.toFixed(2)}`}
+                    {`$ ${marketValue.toFixed(2)}`}
                   </Table.Cell>
                   <Table.Cell textAlign="center">
-                    {!!bookValue && `$ ${bookValue.toFixed(2)}`}
+                    {`$ ${bookValue.toFixed(2)}`}
                   </Table.Cell>
                   <Table.Cell textAlign="center">
                     {unrealizedGainMarkup}

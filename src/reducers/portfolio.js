@@ -1,3 +1,4 @@
+import merge from 'lodash/merge';
 import sampleData from '../data/sampleData.json';
 
 // Types
@@ -16,10 +17,9 @@ const initialState = sampleData.portfolio;
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case types.ADD_ASSET:
-      return {
-        ...state,
-        [action.payload]: { name: action.assetName, price: 0, orders: {} },
-      };
+      return merge({}, state, {
+        [action.assetName]: { name: action.assetName, lastPrice: 0 },
+      });
     case types.REMOVE_ASSET:
     case types.EDIT_ASSET:
     default:
