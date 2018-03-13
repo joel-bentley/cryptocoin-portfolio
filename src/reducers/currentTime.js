@@ -3,7 +3,7 @@ export const types = {
   SET_NEW_TIME: 'TIME/SET_NEW_TIME',
 };
 
-export const initialState = { currentTime: new Date().toString() };
+const initialState = { currentTime: new Date().toString() };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {

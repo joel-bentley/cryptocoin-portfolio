@@ -5,8 +5,8 @@ import { Segment } from 'semantic-ui-react';
 import PortfolioOverview from '../components/PortfolioOverview';
 import PortfolioTable from '../components/PortfolioTable';
 
-import { actions } from '../reducers/portfolio';
-import { selectors } from '../reducers/portfolio';
+import { actions as portfolioActions } from '../reducers/portfolio';
+import { selectors } from '../reducers';
 
 function Home(props) {
   return (
@@ -30,9 +30,9 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    addAsset: assetName => dispatch(actions.addAsset(assetName)),
-    removeAsset: id => dispatch(actions.removeAsset(id)),
-    editAsset: asset => dispatch(actions.editAsset(asset)),
+    addAsset: assetName => dispatch(portfolioActions.addAsset(assetName)),
+    removeAsset: id => dispatch(portfolioActions.removeAsset(id)),
+    editAsset: asset => dispatch(portfolioActions.editAsset(asset)),
   };
 }
 

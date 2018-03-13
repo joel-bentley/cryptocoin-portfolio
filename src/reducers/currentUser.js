@@ -3,7 +3,7 @@ export const types = {
   LOGOUT: 'USER/LOGOUT',
 };
 
-export const initialState = { currentUser: {}, loggedIn: false };
+const initialState = { currentUser: {}, loggedIn: false };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {

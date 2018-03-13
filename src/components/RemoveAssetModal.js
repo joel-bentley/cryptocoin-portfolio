@@ -6,13 +6,13 @@ class RemoveAssetModal extends Component {
     modalOpen: false,
   };
 
-  handleSubmit = id => {
+  handleSubmit = () => {
     this.setState({ modalOpen: false });
-    this.props.handleSubmit(id);
+    this.props.handleSubmit(this.props.asset.name);
   };
 
   render() {
-    const { buttonProps, asset } = this.props;
+    const { buttonProps } = this.props;
     const { modalOpen } = this.state;
 
     return (
@@ -29,20 +29,15 @@ class RemoveAssetModal extends Component {
         <Modal.Header>Remove Asset</Modal.Header>
         <Modal.Content>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
+            Are you sure you would like to remove this asset? (All transactions
+            for this asset will also be deleted.)
           </p>
         </Modal.Content>
         <Modal.Actions>
-          <Button>
+          <Button onClick={() => this.setState({ modalOpen: false })}>
             <Icon name="remove" /> No
           </Button>
-          <Button>
+          <Button onClick={this.handleSubmit}>
             <Icon name="checkmark" /> Yes
           </Button>
         </Modal.Actions>

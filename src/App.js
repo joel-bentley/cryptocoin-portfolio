@@ -6,8 +6,6 @@ import Home from './containers/Home';
 import About from './containers/About';
 import Time from './containers/Time';
 
-const sidebarWidth = 180;
-
 class App extends React.Component {
   render() {
     return (

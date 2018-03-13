@@ -1,0 +1,45 @@
+{
+  "portfolio": {
+    "BTC": {
+      "name": "BTC",
+      "lastPrice": 9320,
+      "lastPriceTime": "2018-03-08T12:00:00.000Z"
+    },
+    "ETH": {
+      "name": "ETH",
+      "lastPrice": 706.74,
+      "lastPriceTime": "2018-03-08T12:00:00.000Z"
+    },
+    "LTC": {
+      "name": "LTC",
+      "lastPrice": 177.57,
+      "lastPriceTime": "2018-03-08T12:00:00.000Z"
+    }
+  },
+  "orders": {
+    "asdfasdf": {
+      "id": "asdfasdf",
+      "assetName": "BTC",
+      "type": "BUY",
+      "date": "2018-02-01T12:00:00.000Z",
+      "quantity": 0.17,
+      "price": 9025.48
+    },
+    "fdadfdad": {
+      "id": "fdadfdad",
+      "assetName": "ETH",
+      "type": "BUY",
+      "date": "2018-02-01T12:00:00.000Z",
+      "quantity": 1.2,
+      "price": 994.56
+    },
+    "urdkurdk": {
+      "id": "urdkurdk",
+      "assetName": "LTC",
+      "type": "BUY",
+      "date": "2018-02-01T12:00:00.000Z",
+      "quantity": 7.1,
+      "price": 139
+    }
+  }
+}

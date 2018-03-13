@@ -37,37 +37,46 @@ class PortfolioTable extends Component {
 
           <Table.Body>
             {portfolio.map(asset => {
-              const unrealizedGainColor =
-                asset.unrealizedGain >= 0 ? 'black' : 'red';
+              const {
+                name,
+                quantity,
+                lastPrice,
+                marketValue,
+                bookValue,
+                unrealizedGain,
+                unrealizedGainPercent,
+              } = asset;
+              const unrealizedGainColor = unrealizedGain >= 0 ? 'black' : 'red';
 
               const unrealizedGainMarkup = (
                 <div style={{ color: unrealizedGainColor }}>
-                  $ {asset.unrealizedGain.toFixed(2)}
+                  $ {unrealizedGain.toFixed(2)}
                   <div style={{ fontSize: 'smaller' }}>
-                    {(100 * asset.unrealizedGainPercent).toFixed(1)} %
+                    {!!unrealizedGainPercent &&
+                      `${(100 * unrealizedGainPercent).toFixed(1)} %`}
                   </div>
                 </div>
               );
 
               return (
-                <Table.Row key={asset.name}>
+                <Table.Row key={name}>
                   <Table.Cell textAlign="center">
                     <i
-                      className={`cc ${asset.name}`}
+                      className={`cc ${name}`}
                       style={{ fontSize: 'xx-large' }}
                     />
                     <br />
-                    <strong style={{ letterSpacing: 1 }}>{asset.name}</strong>
+                    <strong style={{ letterSpacing: 1 }}>{name}</strong>
                   </Table.Cell>
-                  <Table.Cell textAlign="center">{asset.quantity}</Table.Cell>
+                  <Table.Cell textAlign="center">{quantity}</Table.Cell>
                   <Table.Cell textAlign="center">
-                    $ {asset.price.toFixed(2)}
-                  </Table.Cell>
-                  <Table.Cell textAlign="center">
-                    $ {asset.marketValue.toFixed(2)}
+                    {!!lastPrice && `$ ${lastPrice.toFixed(2)}`}
                   </Table.Cell>
                   <Table.Cell textAlign="center">
-                    $ {asset.bookValue.toFixed(2)}
+                    {!!marketValue && `$ ${marketValue.toFixed(2)}`}
+                  </Table.Cell>
+                  <Table.Cell textAlign="center">
+                    {!!bookValue && `$ ${bookValue.toFixed(2)}`}
                   </Table.Cell>
                   <Table.Cell textAlign="center">
                     {unrealizedGainMarkup}
