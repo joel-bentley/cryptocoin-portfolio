@@ -2,9 +2,10 @@ import sampleData from '../data/sampleData.json';
 
 // Types
 export const types = {
-  ADD_ORDER: 'ADD_ORDER',
-  REMOVE_ORDER: 'REMOVE_ORDER',
-  EDIT_ORDER: 'EDIT_ORDER',
+  ADD_ORDER: 'ORDERS/ADD_ORDER',
+  REMOVE_ORDER: 'ORDERS/REMOVE_ORDER',
+  REMOVE_ALL_ASSET_ORDERS: 'ORDERS/REMOVE_ALL_ASSET_ORDERS',
+  EDIT_ORDER: 'ORDERS/EDIT_ORDER',
 };
 
 // Initial State
@@ -15,6 +16,7 @@ export default function reducer(state = initialState, action) {
   switch (action.type) {
     case types.ADD_ORDER:
     case types.REMOVE_ORDER:
+    case types.REMOVE_ALL_ASSET_ORDERS:
     case types.EDIT_ORDER:
     default:
       return state;

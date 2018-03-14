@@ -3,15 +3,15 @@ import sampleData from '../data/sampleData.json';
 
 // Types
 export const types = {
-  ADD_ASSET: 'ADD_ASSET',
-  REMOVE_ASSET: 'REMOVE_ASSET',
-  EDIT_ASSET: 'EDIT_ASSET',
-  GET_LATEST_PRICES: 'GET_LATEST_PRICES',
-  REFRESH_PRICES: 'REFRESH_PRICES',
+  ADD_ASSET: 'ASSETS/ADD_ASSET',
+  REMOVE_ASSET: 'ASSETS/REMOVE_ASSET',
+  EDIT_ASSET: 'ASSETS/EDIT_ASSET',
+  GET_LATEST_PRICES: 'ASSETS/GET_LATEST_PRICES',
+  REFRESH_PRICES: 'ASSETS/REFRESH_PRICES',
 };
 
 // Initial State
-const initialState = sampleData.portfolio;
+const initialState = sampleData.assets;
 
 // Reducer
 export default function reducer(state = initialState, action) {
@@ -36,5 +36,5 @@ export const actions = {
 
 // Selectors
 export const selectors = {
-  getPortfolio: state => Object.values(state.portfolio),
+  getAssets: state => Object.values(state.assets),
 };
