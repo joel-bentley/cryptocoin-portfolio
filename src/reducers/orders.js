@@ -17,6 +17,14 @@ export default function reducer(state = initialState, action) {
     case types.ADD_ORDER:
     case types.REMOVE_ORDER:
     case types.REMOVE_ALL_ASSET_ORDERS:
+      const newOrdersArray = Object.values(state).filter(
+        order => order.assetName !== action.assetName
+      );
+      let newState = {};
+      for (let order of newOrdersArray) {
+        newState[order.id] = order;
+      }
+      return newState;
     case types.EDIT_ORDER:
     default:
       return state;
@@ -27,6 +35,10 @@ export default function reducer(state = initialState, action) {
 export const actions = {
   addOrder: order => ({ type: types.ADD_ORDER, order }),
   removeOrder: id => ({ type: types.REMOVE_ORDER, id }),
+  removeAllAssetOrders: assetName => ({
+    type: types.REMOVE_ALL_ASSET_ORDERS,
+    assetName,
+  }),
   editOrder: order => ({ type: types.EDIT_ORDER, order }),
 };
 
