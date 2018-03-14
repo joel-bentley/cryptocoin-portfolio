@@ -44,10 +44,11 @@ export const actions = {
 
 // Selectors
 export const selectors = {
-  getOrdersOfAsset: (state, assetName) =>
-    Object.values(state.orders).filter(order => order.assetName === assetName),
-  getHoldingsOfAsset: (state, assetName) =>
-    selectors.getOrdersOfAsset(state, assetName).reduce((acc, order) => {
+  getOrders: state => Object.values(state.orders),
+  getAssetOrders: (state, assetName) =>
+    selectors.getOrders(state).filter(order => order.assetName === assetName),
+  getAssetHoldings: (state, assetName) =>
+    selectors.getAssetOrders(state, assetName).reduce((acc, order) => {
       switch (order.type) {
         case 'BUY':
           return acc + order.quantity;
@@ -57,8 +58,8 @@ export const selectors = {
           return acc;
       }
     }, 0),
-  getBookValueOfAsset: (state, assetName) =>
-    selectors.getOrdersOfAsset(state, assetName).reduce((acc, order) => {
+  getAssetBookValue: (state, assetName) =>
+    selectors.getAssetOrders(state, assetName).reduce((acc, order) => {
       switch (order.type) {
         case 'BUY':
           return acc + order.quantity * order.price;

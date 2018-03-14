@@ -7,6 +7,7 @@ import PortfolioTable from '../components/PortfolioTable';
 
 import { actions as assetsActions } from '../reducers/assets';
 import { actions as ordersActions } from '../reducers/orders';
+import { selectors as ordersSelectors } from '../reducers/orders';
 import { selectors } from '../reducers';
 
 class Home extends Component {
@@ -42,7 +43,6 @@ function mapDispatchToProps(dispatch) {
     removeAsset: assetName => dispatch(assetsActions.removeAsset(assetName)),
     removeAllAssetOrders: assetName =>
       dispatch(ordersActions.removeAllAssetOrders(assetName)),
-    editAsset: asset => dispatch(assetsActions.editAsset(asset)),
   };
 }
 

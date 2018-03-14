@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { Table, Icon } from 'semantic-ui-react';
 
 import AddAssetModal from './AddAssetModal';
-import EditAssetModal from './EditAssetModal';
+import EditOrdersModal from './EditOrdersModal';
 import RemoveAssetModal from './RemoveAssetModal';
 
 import 'cryptocoins-icons/webfont/cryptocoins.css';
@@ -10,7 +10,7 @@ import 'cryptocoins-icons/webfont/cryptocoins-colors.css';
 
 class PortfolioTable extends Component {
   render() {
-    const { portfolio, addAsset, editAsset, removeAsset } = this.props;
+    const { portfolio, orders, addAsset, editAsset, removeAsset } = this.props;
 
     return (
       <Fragment>
@@ -82,14 +82,13 @@ class PortfolioTable extends Component {
                     {unrealizedGainMarkup}
                   </Table.Cell>
                   <Table.Cell textAlign="center">
-                    <EditAssetModal
+                    <EditOrdersModal
                       buttonProps={{
                         icon: 'write',
                         circular: true,
                         color: 'teal',
                       }}
                       asset={asset}
-                      handleSubmit={editAsset}
                     />
                     <RemoveAssetModal
                       buttonProps={{

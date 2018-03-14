@@ -27,11 +27,11 @@ export const selectors = {
     const portfolio = assetsSelectors.getAssets(state);
 
     for (let asset of portfolio) {
-      asset.quantity = ordersSelectors.getHoldingsOfAsset(state, asset.name);
+      asset.quantity = ordersSelectors.getAssetHoldings(state, asset.name);
 
       asset.marketValue = asset.quantity * asset.lastPrice;
 
-      asset.bookValue = ordersSelectors.getBookValueOfAsset(state, asset.name);
+      asset.bookValue = ordersSelectors.getAssetBookValue(state, asset.name);
 
       asset.unrealizedGain = asset.marketValue - asset.bookValue;
       asset.unrealizedGainPercent = asset.unrealizedGain / asset.bookValue;
