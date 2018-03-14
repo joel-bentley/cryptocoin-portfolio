@@ -14,6 +14,7 @@ class EditOrdersModal extends Component {
 
     return (
       <Modal
+        size="large"
         trigger={
           <Button
             {...buttonProps}
@@ -23,7 +24,7 @@ class EditOrdersModal extends Component {
         open={modalOpen}
         onClose={() => this.setState({ modalOpen: false })}
       >
-        <Modal.Header>Add/Edit Asset Orders</Modal.Header>
+        <Modal.Header>Add/Edit {asset.name} Orders </Modal.Header>
         <Modal.Content>
           <EditOrders asset={asset} />
         </Modal.Content>

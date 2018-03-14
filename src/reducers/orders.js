@@ -1,3 +1,5 @@
+import { generateRandomId } from '../util';
+
 import sampleData from '../data/sampleData.json';
 
 // Types
@@ -33,7 +35,7 @@ export default function reducer(state = initialState, action) {
 
 // Actions
 export const actions = {
-  addOrder: order => ({ type: types.ADD_ORDER, order }),
+  addOrder: () => ({ type: types.ADD_ORDER }),
   removeOrder: id => ({ type: types.REMOVE_ORDER, id }),
   removeAllAssetOrders: assetName => ({
     type: types.REMOVE_ALL_ASSET_ORDERS,

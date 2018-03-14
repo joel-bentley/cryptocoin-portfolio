@@ -10,7 +10,7 @@ import 'cryptocoins-icons/webfont/cryptocoins-colors.css';
 
 class PortfolioTable extends Component {
   render() {
-    const { portfolio, orders, addAsset, editAsset, removeAsset } = this.props;
+    const { portfolio, addAsset, removeAsset } = this.props;
 
     return (
       <Fragment>

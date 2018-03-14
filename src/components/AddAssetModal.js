@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Modal, Button, Icon, Input } from 'semantic-ui-react';
 
-import { generateRandomId } from '../util/util';
 import assetList from '../data/assetList.json';
 
 class AddAssetModal extends Component {

@@ -1,5 +1,4 @@
-import formatDateFn from 'date-fns/format';
-import parseDateFn from 'date-fns/parse';
+import moment from 'moment';
 
 const ID_LENGTH = 8;
 const ID_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz123456789-_';
@@ -11,6 +10,6 @@ export function generateRandomId(length = ID_LENGTH, characters = ID_CHARS) {
     .join('');
 }
 
-export function formatDate(date, format) {
-  return formatDateFn(parseDateFn(date), format);
+export function formatDate(date, format = 'YYYY-MM-DD') {
+  return moment(date).format(format);
 }

@@ -7,7 +7,6 @@ import PortfolioTable from '../components/PortfolioTable';
 
 import { actions as assetsActions } from '../reducers/assets';
 import { actions as ordersActions } from '../reducers/orders';
-import { selectors as ordersSelectors } from '../reducers/orders';
 import { selectors } from '../reducers';
 
 class Home extends Component {
