@@ -1,6 +1,9 @@
+// TODO: Parts of this component should be moved into subcomponents.
+// TODO: Restructure state object (or just rename state keys).
+
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Table, Button, Icon, Input, Select } from 'semantic-ui-react';
+import { Table, Button, Icon, Input, Select, Confirm } from 'semantic-ui-react';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -17,6 +20,7 @@ class EditOrders extends Component {
     typeInput: null,
     quantityInput: null,
     priceInput: null,
+    confirmModalOpen: false,
   };
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value });
@@ -35,7 +39,7 @@ class EditOrders extends Component {
       quantityInput,
       priceInput,
     } = this.state;
-    const { assetOrders, addOrder, removeOrder, editOrder } = this.props;
+    const { asset, assetOrders, addOrder, removeOrder, editOrder } = this.props;
 
     return (
       <Fragment>
@@ -63,6 +67,8 @@ class EditOrders extends Component {
                           selected={dateInput}
                           onChange={this.handleChangeDate}
                           dateFormat="YYYY-MM-DD"
+                          minDate={moment('2009-01-12')}
+                          maxDate={moment()}
                         />
                       </div>
                     </Table.Cell>
@@ -99,7 +105,7 @@ class EditOrders extends Component {
                         onClick={() => {
                           editOrder({
                             id: editingId,
-                            date: dateInput,
+                            date: dateInput.toISOString(),
                             type: typeInput,
                             quantity: parseFloat(quantityInput),
                             price: parseFloat(priceInput),
@@ -122,7 +128,7 @@ class EditOrders extends Component {
                     <Table.Cell textAlign="center">{order.type}</Table.Cell>
                     <Table.Cell textAlign="center">{order.quantity}</Table.Cell>
                     <Table.Cell textAlign="center">
-                      {order.price && `$ ${order.price}`}
+                      {!!order.price && `$ ${order.price}`}
                     </Table.Cell>
                     <Table.Cell textAlign="center">
                       <Button
@@ -143,7 +149,16 @@ class EditOrders extends Component {
                         icon="delete"
                         circular
                         color="orange"
-                        onClick={() => removeOrder(order.id)}
+                        onClick={() =>
+                          this.setState({
+                            confirmModalOpen: true,
+                            editingId: order.id,
+                            dateInput: moment(order.date),
+                            typeInput: order.type,
+                            quantityInput: order.quantity,
+                            priceInput: order.price,
+                          })
+                        }
                       />
                     </Table.Cell>
                   </Fragment>
@@ -152,10 +167,26 @@ class EditOrders extends Component {
             ))}
           </Table.Body>
         </Table>
-        <Button style={{ float: 'right' }} onClick={addOrder}>
+        <Button style={{ float: 'right' }} onClick={() => addOrder(asset.name)}>
           <Icon name="plus" /> Add an Order
         </Button>
         <div style={{ height: '2em' }} />
+        <Confirm
+          open={this.state.confirmModalOpen}
+          header="Remove Order"
+          confirmButton="Yes"
+          content={`Are you sure you want to remove this ${
+            {
+              BUY: 'purchase',
+              SELL: 'sale',
+            }[typeInput]
+          } of ${asset.name} from ${moment(dateInput).format('MMM D, YYYY')}?`}
+          onCancel={() => this.setState({ confirmModalOpen: false })}
+          onConfirm={() => {
+            removeOrder(editingId);
+            this.setState({ confirmModalOpen: false, editingId: null });
+          }}
+        />
       </Fragment>
     );
   }
@@ -169,7 +200,7 @@ function mapStateToProps(state, props) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    addOrder: () => dispatch(ordersActions.addOrder()),
+    addOrder: assetName => dispatch(ordersActions.addOrder(assetName)),
     removeOrder: orderId => dispatch(ordersActions.removeOrder(orderId)),
     editOrder: order => dispatch(ordersActions.editOrder(order)),
   };

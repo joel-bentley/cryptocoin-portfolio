@@ -1,3 +1,8 @@
+// This project uses modified 'ducks' redux project structure:
+//   http://mmazzarolo.com/blog/my-journey-toward-a-maintainable-project-structure-for-react/redux/
+
+import moment from 'moment';
+import merge from 'lodash/merge';
 import { generateRandomId } from '../util';
 
 import sampleData from '../data/sampleData.json';
@@ -17,17 +22,31 @@ const initialState = sampleData.orders;
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case types.ADD_ORDER:
+      var id = generateRandomId();
+      return merge({}, state, {
+        [id]: {
+          id,
+          assetName: action.assetName,
+          date: moment().toISOString(),
+          type: 'BUY',
+          quantity: 0,
+          price: 0,
+        },
+      });
     case types.REMOVE_ORDER:
+      var newState = merge({}, state);
+      delete newState[action.id];
+      return newState;
     case types.REMOVE_ALL_ASSET_ORDERS:
-      const newOrdersArray = Object.values(state).filter(
-        order => order.assetName !== action.assetName
-      );
-      let newState = {};
-      for (let order of newOrdersArray) {
-        newState[order.id] = order;
+      var newState = merge({}, state);
+      for (let key in newState) {
+        if (newState[key].assetName === action.assetName) {
+          delete newState[key];
+        }
       }
       return newState;
     case types.EDIT_ORDER:
+      return merge({}, state, { [action.order.id]: action.order });
     default:
       return state;
   }
@@ -35,7 +54,7 @@ export default function reducer(state = initialState, action) {
 
 // Actions
 export const actions = {
-  addOrder: () => ({ type: types.ADD_ORDER }),
+  addOrder: assetName => ({ type: types.ADD_ORDER, assetName }),
   removeOrder: id => ({ type: types.REMOVE_ORDER, id }),
   removeAllAssetOrders: assetName => ({
     type: types.REMOVE_ALL_ASSET_ORDERS,

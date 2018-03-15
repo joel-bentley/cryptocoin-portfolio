@@ -1,3 +1,6 @@
+// This project uses modified 'ducks' redux project structure:
+//   http://mmazzarolo.com/blog/my-journey-toward-a-maintainable-project-structure-for-react/redux/
+
 import merge from 'lodash/merge';
 import sampleData from '../data/sampleData.json';
 
