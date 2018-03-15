@@ -22,7 +22,7 @@ const initialState = sampleData.orders;
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case types.ADD_ORDER:
-      var id = generateRandomId();
+      const id = generateRandomId();
       return merge({}, state, {
         [id]: {
           id,
@@ -34,11 +34,11 @@ export default function reducer(state = initialState, action) {
         },
       });
     case types.REMOVE_ORDER:
-      var newState = merge({}, state);
-      delete newState[action.id];
-      return newState;
+      const removeOrderState = merge({}, state);
+      delete removeOrderState[action.id];
+      return removeOrderState;
     case types.REMOVE_ALL_ASSET_ORDERS:
-      var newState = merge({}, state);
+      const newState = merge({}, state);
       for (let key in newState) {
         if (newState[key].assetName === action.assetName) {
           delete newState[key];
