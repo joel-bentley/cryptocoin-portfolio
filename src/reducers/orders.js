@@ -2,7 +2,7 @@
 //   http://mmazzarolo.com/blog/my-journey-toward-a-maintainable-project-structure-for-react/redux/
 
 import moment from 'moment';
-import merge from 'lodash/merge';
+import cloneDeep from 'lodash/cloneDeep';
 import { generateRandomId } from '../util';
 
 import sampleData from '../data/sampleData.json';
@@ -20,10 +20,13 @@ const initialState = sampleData.orders;
 
 // Reducer
 export default function reducer(state = initialState, action) {
+  const newState = cloneDeep(state);
+
   switch (action.type) {
     case types.ADD_ORDER:
       const id = generateRandomId();
-      return merge({}, state, {
+      return {
+        ...newState,
         [id]: {
           id,
           assetName: action.assetName,
@@ -32,13 +35,11 @@ export default function reducer(state = initialState, action) {
           quantity: 0,
           price: 0,
         },
-      });
+      };
     case types.REMOVE_ORDER:
-      const removeOrderState = merge({}, state);
-      delete removeOrderState[action.id];
-      return removeOrderState;
+      delete newState[action.id];
+      return newState;
     case types.REMOVE_ALL_ASSET_ORDERS:
-      const newState = merge({}, state);
       for (let key in newState) {
         if (newState[key].assetName === action.assetName) {
           delete newState[key];
@@ -46,7 +47,7 @@ export default function reducer(state = initialState, action) {
       }
       return newState;
     case types.EDIT_ORDER:
-      return merge({}, state, { [action.order.id]: action.order });
+      return { ...newState, [action.order.id]: action.order };
     default:
       return state;
   }
@@ -65,7 +66,7 @@ export const actions = {
 
 // Selectors
 export const selectors = {
-  getOrders: state => merge({}, state.orders),
+  getOrders: state => cloneDeep(state.orders),
   getOrdersArray: state => Object.values(selectors.getOrders(state)),
   getAssetOrders: (state, assetName) =>
     selectors

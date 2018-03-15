@@ -1,7 +1,7 @@
 // This project uses modified 'ducks' redux project structure:
 //   http://mmazzarolo.com/blog/my-journey-toward-a-maintainable-project-structure-for-react/redux/
 
-import merge from 'lodash/merge';
+import cloneDeep from 'lodash/cloneDeep';
 import sampleData from '../data/sampleData.json';
 
 // Types
@@ -17,17 +17,19 @@ const initialState = sampleData.assets;
 
 // Reducer
 export default function reducer(state = initialState, action) {
+  const newState = cloneDeep(state);
+
   switch (action.type) {
     case types.ADD_ASSET:
-      return merge({}, state, {
+      return {
+        ...newState,
         [action.assetName]: { name: action.assetName, lastPrice: 0 },
-      });
+      };
     case types.REMOVE_ASSET:
-      const newState = merge({}, state);
       delete newState[action.assetName];
       return newState;
     default:
-      return state;
+      return newState;
   }
 }
 
@@ -39,6 +41,6 @@ export const actions = {
 
 // Selectors
 export const selectors = {
-  getAssets: state => merge({}, state.assets),
+  getAssets: state => cloneDeep(state.assets),
   getAssetsArray: state => Object.values(selectors.getAssets(state)),
 };

@@ -2,20 +2,18 @@
   "assets": {
     "BTC": {
       "name": "BTC",
-      "lastPrice": 9320,
-      "lastPriceTime": "2018-03-08T12:00:00.000Z"
+      "lastPrice": 9320
     },
     "ETH": {
       "name": "ETH",
-      "lastPrice": 706.74,
-      "lastPriceTime": "2018-03-08T12:00:00.000Z"
+      "lastPrice": 706.74
     },
     "LTC": {
       "name": "LTC",
-      "lastPrice": 177.57,
-      "lastPriceTime": "2018-03-08T12:00:00.000Z"
+      "lastPrice": 177.57
     }
   },
+  "lastPriceTime": "2018-03-08T12:00:00.000Z",
   "orders": {
     "asdfasdf": {
       "id": "asdfasdf",
