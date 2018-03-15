@@ -11,6 +11,10 @@ import { selectors } from '../reducers';
 import { selectors as timeSelectors } from '../reducers/time';
 
 class Home extends Component {
+  componentDidMount() {
+    this.getCurrentPrices();
+  }
+
   removeAssetAndOrders = assetName => {
     this.props.removeAsset(assetName);
     this.props.removeAllAssetOrders(assetName);

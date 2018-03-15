@@ -12,7 +12,7 @@ export function* fetchCurrentPrices(action) {
       'USD'
     );
     yield put(assetsActions.updatePrices(prices));
-    yield put(timeActions.fetchNewTime());
+    yield put(timeActions.setNewTime());
   } catch (err) {
     console.error(err.message);
   }

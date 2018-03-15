@@ -1,26 +1,23 @@
+import moment from 'moment';
+
 export const types = {
-  FETCH_NEW_TIME: 'TIME/SAGAS/FETCH_NEW_TIME',
-  SET_NEW_TIME: 'TIME/SET_NEW_TIME',
+  SET_UPDATE_TIME: 'TIME/GET_CURRENT_TIME',
 };
 
 const initialState = { lastUpdateTime: null };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case types.SET_NEW_TIME:
-      return { ...state, lastUpdateTime: action.dateTime };
+    case types.SET_UPDATE_TIME:
+      return { ...state, lastUpdateTime: moment().toISOString() };
     default:
       return state;
   }
 }
 
 export const actions = {
-  fetchNewTime: () => ({
-    type: types.FETCH_NEW_TIME,
-  }),
-  setNewTime: dateString => ({
-    type: types.SET_NEW_TIME,
-    dateTime: dateString,
+  setNewTime: () => ({
+    type: types.SET_UPDATE_TIME,
   }),
 };
 
