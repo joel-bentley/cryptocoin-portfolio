@@ -39,5 +39,6 @@ export const actions = {
 
 // Selectors
 export const selectors = {
-  getAssets: state => Object.values(state.assets),
+  getAssets: state => merge({}, state.assets),
+  getAssetsArray: state => Object.values(selectors.getAssets(state)),
 };

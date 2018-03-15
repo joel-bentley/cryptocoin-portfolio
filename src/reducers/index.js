@@ -24,7 +24,7 @@ export default combineReducers({
 // Selectors
 export const selectors = {
   calculateHoldings: state => {
-    const portfolio = assetsSelectors.getAssets(state);
+    const portfolio = assetsSelectors.getAssetsArray(state);
 
     for (let asset of portfolio) {
       asset.quantity = ordersSelectors.getAssetHoldings(state, asset.name);

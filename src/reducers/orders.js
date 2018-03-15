@@ -65,9 +65,12 @@ export const actions = {
 
 // Selectors
 export const selectors = {
-  getOrders: state => Object.values(state.orders),
+  getOrders: state => merge({}, state.orders),
+  getOrdersArray: state => Object.values(selectors.getOrders(state)),
   getAssetOrders: (state, assetName) =>
-    selectors.getOrders(state).filter(order => order.assetName === assetName),
+    selectors
+      .getOrdersArray(state)
+      .filter(order => order.assetName === assetName),
   getAssetHoldings: (state, assetName) =>
     selectors.getAssetOrders(state, assetName).reduce((acc, order) => {
       switch (order.type) {
