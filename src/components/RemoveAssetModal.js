@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Button, Icon } from 'semantic-ui-react';
+import { Modal, Button } from 'semantic-ui-react';
 
 class RemoveAssetModal extends Component {
   state = {
@@ -12,7 +12,7 @@ class RemoveAssetModal extends Component {
   };
 
   render() {
-    const { buttonProps } = this.props;
+    const { buttonProps, asset } = this.props;
     const { modalOpen } = this.state;
 
     return (
@@ -29,16 +29,16 @@ class RemoveAssetModal extends Component {
         <Modal.Header>Remove Asset</Modal.Header>
         <Modal.Content>
           <p>
-            Are you sure you would like to remove this asset? (All transactions
-            for this asset will also be deleted.)
+            Are you sure you would like to remove {asset.name} from your
+            portfolio? (All transactions for {asset.name} will also be deleted.)
           </p>
         </Modal.Content>
         <Modal.Actions>
           <Button onClick={() => this.setState({ modalOpen: false })}>
-            <Icon name="remove" /> No
+            Cancel
           </Button>
-          <Button onClick={this.handleSubmit}>
-            <Icon name="checkmark" /> Yes
+          <Button color="blue" onClick={this.handleSubmit}>
+            Yes, remove {asset.name}
           </Button>
         </Modal.Actions>
       </Modal>
