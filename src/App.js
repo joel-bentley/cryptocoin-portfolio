@@ -3,7 +3,7 @@ import { Route, NavLink } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react';
 
 import Home from './containers/Home';
-import About from './containers/About';
+import About from './components/About';
 import Time from './containers/Time';
 
 class App extends React.Component {
@@ -11,7 +11,6 @@ class App extends React.Component {
     return (
       <Fragment>
         <Menu
-          fixed="top"
           style={{
             backgroundColor: '#86c773',
           }}
@@ -28,7 +27,7 @@ class App extends React.Component {
           </Menu.Item>
         </Menu>
 
-        <div style={{ padding: 100 }}>
+        <div style={{ paddingTop: 80, paddingLeft: 100, paddingRight: 100 }}>
           <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />
           <Route path="/time" component={Time} />
