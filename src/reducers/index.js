@@ -8,15 +8,13 @@ import { combineReducers } from 'redux';
 import { selectors as assetsSelectors } from './assets';
 import { selectors as ordersSelectors } from './orders';
 
-import currentTimeReducer from './currentTime';
-import currentUserReducer from './currentUser';
+import timeReducer from './time';
 import assetsReducer from './assets';
 import ordersReducer from './orders';
 
 // Reducer
 export default combineReducers({
-  time: currentTimeReducer,
-  user: currentUserReducer,
+  time: timeReducer,
   assets: assetsReducer,
   orders: ordersReducer,
 });

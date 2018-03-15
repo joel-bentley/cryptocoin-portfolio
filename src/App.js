@@ -4,7 +4,6 @@ import { Menu } from 'semantic-ui-react';
 
 import Home from './containers/Home';
 import About from './components/About';
-import Time from './containers/Time';
 
 class App extends React.Component {
   render() {
@@ -17,20 +16,16 @@ class App extends React.Component {
         >
           <Menu.Item header>CRYPTOCOIN PORTFOLIO</Menu.Item>
           <Menu.Item exact link to="/" as={NavLink}>
-            Home
+            My Portfolio
           </Menu.Item>
           <Menu.Item link to="/about" as={NavLink}>
-            About
-          </Menu.Item>
-          <Menu.Item link to="/time" as={NavLink}>
-            Time
+            About this App
           </Menu.Item>
         </Menu>
 
         <div style={{ paddingTop: 80, paddingLeft: 100, paddingRight: 100 }}>
           <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />
-          <Route path="/time" component={Time} />
         </div>
       </Fragment>
     );

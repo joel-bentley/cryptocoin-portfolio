@@ -12,6 +12,10 @@ function About(props) {
         library to locally store your portfolio in localstorage in your browser.
       </p>
       <p>
+        For live pricing data this app uses the free API from{' '}
+        <a href="https://min-api.cryptocompare.com/">CryptoCompare</a>.
+      </p>
+      <p>
         I can't guarantee the accuracy of all values and calculations in this
         app. If you find any bugs, feel free to contact me at
         joel@joelbentley.com or add an{' '}

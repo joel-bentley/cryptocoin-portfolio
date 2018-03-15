@@ -8,8 +8,8 @@ import sampleData from '../data/sampleData.json';
 export const types = {
   ADD_ASSET: 'ASSETS/ADD_ASSET',
   REMOVE_ASSET: 'ASSETS/REMOVE_ASSET',
-  GET_LATEST_PRICES: 'ASSETS/GET_LATEST_PRICES',
-  REFRESH_PRICES: 'ASSETS/REFRESH_PRICES',
+  FETCH_CURRENT_PRICES: 'ASSETS/SAGAS/FETCH_CURRENT_PRICES',
+  UPDATE_PRICES: 'ASSETS/UPDATE_PRICES',
 };
 
 // Initial State
@@ -28,6 +28,13 @@ export default function reducer(state = initialState, action) {
     case types.REMOVE_ASSET:
       delete newState[action.assetName];
       return newState;
+    case types.UPDATE_PRICES:
+      for (let key in action.prices) {
+        if (newState[key]) {
+          newState[key].lastPrice = action.prices[key].USD;
+        }
+      }
+      return newState;
     default:
       return newState;
   }
@@ -37,6 +44,11 @@ export default function reducer(state = initialState, action) {
 export const actions = {
   addAsset: assetName => ({ type: types.ADD_ASSET, assetName }),
   removeAsset: assetName => ({ type: types.REMOVE_ASSET, assetName }),
+  fetchCurrentPrices: assetList => ({
+    type: types.FETCH_CURRENT_PRICES,
+    assetList,
+  }),
+  updatePrices: prices => ({ type: types.UPDATE_PRICES, prices }),
 };
 
 // Selectors

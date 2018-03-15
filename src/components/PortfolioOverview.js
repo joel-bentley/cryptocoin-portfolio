@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Header } from 'semantic-ui-react';
+import { Segment, Grid, Header } from 'semantic-ui-react';
 
 function PortfolioOverview({ overview }) {
   const totalUnrealizedGainColor =
@@ -15,22 +15,24 @@ function PortfolioOverview({ overview }) {
   );
 
   return (
-    <Grid columns={3} divided>
-      <Grid.Row>
-        <Grid.Column textAlign="center">
-          <Header as="h5">Total Market Value</Header>
-          $ {overview.totalMarketValue.toFixed(2)}
-        </Grid.Column>
-        <Grid.Column textAlign="center">
-          <Header as="h5">Total Book Value</Header>
-          $ {overview.totalBookValue.toFixed(2)}
-        </Grid.Column>
-        <Grid.Column textAlign="center">
-          <Header as="h5">Total Unrealized Gain</Header>
-          {totalUnrealizedGainMarkup}
-        </Grid.Column>
-      </Grid.Row>
-    </Grid>
+    <Segment>
+      <Grid columns={3} divided>
+        <Grid.Row>
+          <Grid.Column textAlign="center">
+            <Header as="h5">Total Market Value</Header>
+            $ {overview.totalMarketValue.toFixed(2)}
+          </Grid.Column>
+          <Grid.Column textAlign="center">
+            <Header as="h5">Total Book Value</Header>
+            $ {overview.totalBookValue.toFixed(2)}
+          </Grid.Column>
+          <Grid.Column textAlign="center">
+            <Header as="h5">Total Unrealized Gain</Header>
+            {totalUnrealizedGainMarkup}
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
+    </Segment>
   );
 }
 

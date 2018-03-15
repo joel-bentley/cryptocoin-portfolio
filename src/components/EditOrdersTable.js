@@ -7,8 +7,6 @@ import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 
-import { formatDate } from '../util';
-
 class EditOrdersTable extends Component {
   state = {
     editingId: null,
@@ -120,7 +118,7 @@ class EditOrdersTable extends Component {
                 ) : (
                   <Fragment>
                     <Table.Cell textAlign="center">
-                      {formatDate(order.date)}
+                      {moment(order.date).format('YYYY-MM-DD')}
                     </Table.Cell>
                     <Table.Cell textAlign="center">{order.type}</Table.Cell>
                     <Table.Cell textAlign="center">{order.quantity}</Table.Cell>
