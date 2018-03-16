@@ -35,6 +35,7 @@ class Home extends Component {
         <PortfolioOverview overview={this.props.overview} />
         <PortfolioTable
           portfolio={this.props.portfolio}
+          getCurrentPrices={this.getCurrentPrices}
           addAsset={this.props.addAsset}
           removeAsset={this.removeAssetAndOrders}
           editAsset={this.props.editAsset}
