@@ -6,10 +6,10 @@ import sampleData from '../data/sampleData.json';
 
 // Types
 export const types = {
-  ADD_ASSET: 'ASSETS/ADD_ASSET',
-  REMOVE_ASSET: 'ASSETS/REMOVE_ASSET',
-  FETCH_CURRENT_PRICES: 'ASSETS/SAGAS/FETCH_CURRENT_PRICES',
-  UPDATE_PRICES: 'ASSETS/UPDATE_PRICES',
+  ADD_ASSET: 'assets/ADD_ASSET',
+  REMOVE_ASSET: 'assets/REMOVE_ASSET',
+  FETCH_CURRENT_PRICES: 'assets/sagas/FETCH_CURRENT_PRICES',
+  UPDATE_PRICES: 'assets/UPDATE_PRICES',
 };
 
 // Initial State

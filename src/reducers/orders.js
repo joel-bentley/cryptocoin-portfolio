@@ -9,10 +9,10 @@ import sampleData from '../data/sampleData.json';
 
 // Types
 export const types = {
-  ADD_ORDER: 'ORDERS/ADD_ORDER',
-  REMOVE_ORDER: 'ORDERS/REMOVE_ORDER',
-  REMOVE_ALL_ASSET_ORDERS: 'ORDERS/REMOVE_ALL_ASSET_ORDERS',
-  EDIT_ORDER: 'ORDERS/EDIT_ORDER',
+  ADD_ORDER: 'orders/ADD_ORDER',
+  REMOVE_ORDER: 'orders/REMOVE_ORDER',
+  REMOVE_ALL_ASSET_ORDERS: 'orders/REMOVE_ALL_ASSET_ORDERS',
+  EDIT_ORDER: 'orders/EDIT_ORDER',
 };
 
 // Initial State

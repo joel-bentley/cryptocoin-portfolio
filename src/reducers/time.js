@@ -1,7 +1,7 @@
 import moment from 'moment';
 
 export const types = {
-  SET_UPDATE_TIME: 'TIME/GET_CURRENT_TIME',
+  SET_UPDATE_TIME: 'time/GET_CURRENT_TIME',
 };
 
 const initialState = { lastUpdateTime: null };
