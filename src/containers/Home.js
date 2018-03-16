@@ -13,6 +13,11 @@ import { selectors as timeSelectors } from '../reducers/time';
 class Home extends Component {
   componentDidMount() {
     this.getCurrentPrices();
+    this.getPricesInterval = setInterval(this.getCurrentPrices, 60000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.getPricesInterval);
   }
 
   removeAssetAndOrders = assetName => {
