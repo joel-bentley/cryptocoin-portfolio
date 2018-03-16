@@ -8,6 +8,12 @@ import RemoveAssetModal from './RemoveAssetModal';
 import 'cryptocoins-icons/webfont/cryptocoins.css';
 import 'cryptocoins-icons/webfont/cryptocoins-colors.css';
 
+function formatUsd(value) {
+  return `$ ${
+    Math.abs(value) >= 0.1 ? value.toFixed(2) : value.toPrecision(2)
+  }`;
+}
+
 class PortfolioTable extends Component {
   render() {
     const { portfolio, addAsset, removeAsset } = this.props;
@@ -50,7 +56,7 @@ class PortfolioTable extends Component {
 
               const unrealizedGainMarkup = (
                 <div style={{ color: unrealizedGainColor }}>
-                  $ {unrealizedGain.toFixed(2)}
+                  {formatUsd(unrealizedGain)}
                   <div style={{ fontSize: 'smaller' }}>
                     {!!unrealizedGainPercent &&
                       `${(100 * unrealizedGainPercent).toFixed(1)} %`}
@@ -70,18 +76,13 @@ class PortfolioTable extends Component {
                   </Table.Cell>
                   <Table.Cell textAlign="center">{quantity}</Table.Cell>
                   <Table.Cell textAlign="center">
-                    {!!lastPrice &&
-                      `$ ${
-                        lastPrice >= 0.01
-                          ? lastPrice.toFixed(2)
-                          : lastPrice.toPrecision(2)
-                      }`}
+                    {!!lastPrice && formatUsd(lastPrice)}
                   </Table.Cell>
                   <Table.Cell textAlign="center">
-                    {`$ ${marketValue.toFixed(2)}`}
+                    {formatUsd(marketValue)}
                   </Table.Cell>
                   <Table.Cell textAlign="center">
-                    {`$ ${bookValue.toFixed(2)}`}
+                    {formatUsd(bookValue)}
                   </Table.Cell>
                   <Table.Cell textAlign="center">
                     {unrealizedGainMarkup}
