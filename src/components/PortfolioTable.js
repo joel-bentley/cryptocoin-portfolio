@@ -9,12 +9,6 @@ import 'cryptocoins-icons/webfont/cryptocoins.css';
 import 'cryptocoins-icons/webfont/cryptocoins-colors.css';
 
 class PortfolioTable extends Component {
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.portfolio.length > this.props.portfolio.length) {
-      this.props.getCurrentPrices();
-    }
-  }
-
   render() {
     const { portfolio, addAsset, removeAsset } = this.props;
 

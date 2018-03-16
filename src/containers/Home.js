@@ -20,6 +20,12 @@ class Home extends Component {
     clearInterval(this.getPricesInterval);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.portfolio.length > this.props.portfolio.length) {
+      this.getCurrentPrices();
+    }
+  }
+
   removeAssetAndOrders = assetName => {
     this.props.removeAsset(assetName);
     this.props.removeAllAssetOrders(assetName);
@@ -40,7 +46,6 @@ class Home extends Component {
         <PortfolioOverview overview={this.props.overview} />
         <PortfolioTable
           portfolio={this.props.portfolio}
-          getCurrentPrices={this.getCurrentPrices}
           addAsset={this.props.addAsset}
           removeAsset={this.removeAssetAndOrders}
           editAsset={this.props.editAsset}
