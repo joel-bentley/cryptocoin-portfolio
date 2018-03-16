@@ -10,7 +10,7 @@ import 'cryptocoins-icons/webfont/cryptocoins-colors.css';
 
 class PortfolioTable extends Component {
   componentWillReceiveProps(nextProps) {
-    if (nextProps.portfolio.length !== this.props.portfolio.length) {
+    if (nextProps.portfolio.length > this.props.portfolio.length) {
       this.props.getCurrentPrices();
     }
   }
@@ -76,7 +76,12 @@ class PortfolioTable extends Component {
                   </Table.Cell>
                   <Table.Cell textAlign="center">{quantity}</Table.Cell>
                   <Table.Cell textAlign="center">
-                    {!!lastPrice && `$ ${lastPrice.toFixed(2)}`}
+                    {!!lastPrice &&
+                      `$ ${
+                        lastPrice >= 0.01
+                          ? lastPrice.toFixed(2)
+                          : lastPrice.toPrecision(2)
+                      }`}
                   </Table.Cell>
                   <Table.Cell textAlign="center">
                     {`$ ${marketValue.toFixed(2)}`}
