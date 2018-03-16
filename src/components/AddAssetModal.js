@@ -40,17 +40,19 @@ class AddAssetModal extends Component {
       >
         <Modal.Header>Add Asset</Modal.Header>
         <Modal.Content>
-          <Input
-            list="assets"
-            placeholder="Choose Name..."
-            value={this.state.assetName}
-            onChange={this.handleChange}
-          />
-          <datalist id="assets">
-            {assetList.map(assetName => (
-              <option value={assetName} key={assetName} />
-            ))}
-          </datalist>
+          <div style={{ textAlign: 'center' }}>
+            <Input
+              list="assets"
+              placeholder="Choose Name..."
+              value={this.state.assetName}
+              onChange={this.handleChange}
+            />
+            <datalist id="assets">
+              {assetList.map(assetName => (
+                <option value={assetName} key={assetName} />
+              ))}
+            </datalist>
+          </div>
         </Modal.Content>
         <Modal.Actions>
           <Button onClick={() => this.setState({ modalOpen: false })}>
