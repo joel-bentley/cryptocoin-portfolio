@@ -4,6 +4,9 @@ This app uses the free API from [CryptoCompare](https://min-api.cryptocompare.co
 
 I can't guarantee the accuracy of all values and calculations in this app. If you find any bugs, feel free to contact me at joel@joelbentley.com or add an [issue on Github](https://github.com/joel-bentley/cryptocoin-portfolio/issues).
 
----
+To maybe add in the future:
 
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+* Use the [reselect](https://github.com/reactjs/reselect) library to memoize redux selectors in order to only have the rows that were updated recalculated from state
+* Add charts and visualizations (react-highcharts or similar)
+* Add ability to sort rows by any columns
+* Add ability to add orders and display amounts in different currencies

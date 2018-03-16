@@ -1,4 +1,5 @@
 import React from 'react';
+import { List } from 'semantic-ui-react';
 
 function About(props) {
   return (
@@ -24,6 +25,21 @@ function About(props) {
           issue on Github
         </a>.
       </p>
+      <p>To maybe add in the future:</p>
+      <List bulleted>
+        <List.Item>
+          Use the <a href="https://github.com/reactjs/reselect">reselect</a>{' '}
+          library to memoize redux selectors in order to only have the rows that
+          were updated recalculated from state
+        </List.Item>
+        <List.Item>
+          Add charts and visualizations (react-highcharts or similar)
+        </List.Item>
+        <List.Item>Add ability to sort rows by any columns</List.Item>
+        <List.Item>
+          Add ability to add orders and display amounts in different currencies
+        </List.Item>
+      </List>
     </div>
   );
 }
