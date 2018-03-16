@@ -36,6 +36,7 @@ class AddAssetModal extends Component {
         }
         open={modalOpen}
         onClose={() => this.setState({ modalOpen: false })}
+        size="tiny"
       >
         <Modal.Header>Add Asset</Modal.Header>
         <Modal.Content>
