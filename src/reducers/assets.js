@@ -21,10 +21,14 @@ export default function reducer(state = initialState, action) {
 
   switch (action.type) {
     case types.ADD_ASSET:
-      return {
-        ...newState,
-        [action.assetName]: { name: action.assetName, lastPrice: 0 },
-      };
+      if (newState[action.assetName]) {
+        return newState;
+      } else {
+        return {
+          ...newState,
+          [action.assetName]: { name: action.assetName, lastPrice: 0 },
+        };
+      }
     case types.REMOVE_ASSET:
       delete newState[action.assetName];
       return newState;
