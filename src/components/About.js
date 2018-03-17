@@ -9,6 +9,8 @@ function About(props) {
         I built this cryptocurrency portfolio to experiment with using the{' '}
         <a href="https://redux.js.org/">Redux</a> state management library. The
         app uses the{' '}
+        <a href="https://github.com/redux-saga/redux-saga">redux-saga</a>{' '}
+        library for async operations like fetching data from the API, and the{' '}
         <a href="https://github.com/rt2zz/redux-persist">redux-persist</a>{' '}
         library to locally store your portfolio in localstorage in your browser.
       </p>

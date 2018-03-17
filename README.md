@@ -1,4 +1,5 @@
-I built this cryptocurrency portfolio to experiment with using the [Redux](https://redux.js.org/) state management library. The app uses the [redux-persist](https://github.com/rt2zz/redux-persist) library to locally store your portfolio in localstorage in your browser.
+I built this cryptocurrency portfolio to experiment with using the [Redux](https://redux.js.org/) state management library. The app uses the [redux-saga](https://github.com/redux-saga/redux-saga)
+library for async operations like fetching data from the API, and the [redux-persist](https://github.com/rt2zz/redux-persist) library to locally store your portfolio in localstorage in your browser.
 
 This app uses the free API from [CryptoCompare](https://min-api.cryptocompare.com/) for live price data.
 
