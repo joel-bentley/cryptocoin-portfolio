@@ -5,7 +5,7 @@ library for async operations like fetching data from the API, and the [redux-per
 
 This app uses the free API from [CryptoCompare](https://min-api.cryptocompare.com/) for live price data.
 
-I can't guarantee the accuracy of all values and calculations in this app. If you find any bugs, feel free to contact me at joel@joelbentley.com or add an [issue on Github](https://github.com/joel-bentley/cryptocoin-portfolio/issues).
+I can't guarantee the accuracy of all values and calculations in this app. If you find any bugs, feel free to contact me at joelbentley7@gmail.com or add an [issue on Github](https://github.com/joel-bentley/cryptocoin-portfolio/issues).
 
 To maybe add in the future:
 
